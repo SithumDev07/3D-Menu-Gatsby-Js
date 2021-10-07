@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
+span {
+    font-size: 4rem;
+}
+
+.menu {
+    font-family: "Oswald", sans-serif;
+    background-color: #111;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    user-select: none;
+    counter-reset: menucounter;
+
+    a {
+        color: #FFFFFF;
+        text-decoration: none;
+    }
+
+    .menu-item {
+        position: relative;
+        text-transform: uppercase;
+        cursor: pointer;
+
+        &::before {
+            counter-increment: menucounter;
+            content: counters(menucounter, '.', decimal-leading-zero);
+            position: absolute;
+            left: -15px;
+            top: 0;
+            font-size: 15px;
+        }
+
+        .menu-item-text {
+            pointer-events: none;
+            display: block;
+            line-height: 1;
+            position: relative;
+            font-size: 4rem;
+        }
+
+        div {
+
+
+            &:nth-child(1) {
+
+
+                span {
+                    will-change: transform;
+                    transform-style: preserve-3d;
+                    transition: 0.5s;
+                    transition-delay: calc(0.05s * var(--index));
+                    transform-origin: bottom;
+                    display: inline-block;
+                }
+            }
+
+            &:nth-child(2) {
+
+
+                span {
+                    will-change: transform;
+                    transform-style: preserve-3d;
+                    transition: 0.5s;
+                    transition-delay: calc(0.05s * var(--index));
+                    transform-origin: top;
+                    display: inline-block;
+                    transform: translate3d(0, -100%, 0) rotateX(-90deg);
+                }
+            }
+        }
+
+        &:hover {
+            div {
+                &:nth-child(1) {
+                    span {
+                        transform: translate3d(0, -100%, 0) rotateX(-90deg);
+                    }
+                }
+
+                &:nth-child(2) {
+                    span {
+                        transform: translate3d(0, -0%, 0) rotateX(0deg);
+                    }
+                }
+            }
+        }
+    }
+}
